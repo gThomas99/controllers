@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Denon MC2000 preliminary Mixxx mapping (skeleton)
+  THIS IS A STARTER FILE. Fill in real MIDI status + midino values captured from your hardware.
+  schemaVersion="1" = legacy preset format used by existing bundled mappings.
+  After editing, reload in Mixxx Preferences > Controllers.
+-->
+<MixxxControllerPreset schemaVersion="1" mixxxVersion="2.5.0">
+  <info>
+    <name>Denon MC2000 (Custom)</name>
+    <author>Graham Thomas</author>
+    <description>Initial skeleton mapping for Denon MC2000: transport, jog, hotcues, loops, shift, LEDs. Replace placeholder MIDI codes with actual captures.</description>
+    <manualPage></manualPage>
+    <forumlink>https://mixxx.discourse.group/c/controller-mappings/10</forumlink>
+    <wikilink></wikilink>
+  </info>
+  <controller id="DENON-MC2000" protocol="MIDI">
+    <scriptfiles>
+      <!-- Components framework (ensure this file exists in the same folder) -->
+      <file filename="lodash.mixxx.js" />
+      <file filename="midi-components-0.0.js"/>
+      <file filename="Denon-MC2000-scripts.js" functionprefix="MC2000"/>
+    </scriptfiles>
+    <controls>
+      <!-- Transport buttons Deck 1 -->
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.playButton</key>
+        <status>0x90</status> <!-- NOTE ON channel 1 (placeholder) -->
+        <midino>0x43</midino> <!-- TODO real note for PLAY 1 -->
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.cueButton</key>
+        <status>0x90</status>
+        <midino>0x42</midino> <!-- TODO real note for CUE 1 -->
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.syncButton</key>
+        <status>0x90</status>
+        <midino>0x6B</midino> <!-- TODO real note for SYNC 1 -->
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.keylockButton</key>
+        <status>0x90</status>
+        <midino>0x06</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Load track to deck 1 -->
+      <control>
+        <group>[Channel1]</group>
+        <key>LoadSelectedTrack</key>
+        <status>0x90</status>
+        <midino>0x64</midino>
+        <options><Button/></options>
+      </control>
+      
+      <!-- Transport buttons Deck 2 -->
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.playButton</key>
+        <status>0x91</status> <!-- channel 2 placeholder -->
+        <midino>0x43</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.cueButton</key>
+        <status>0x91</status>
+        <midino>0x42</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.syncButton</key>
+        <status>0x91</status>
+        <midino>0x6B</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.keylockButton</key>
+        <status>0x91</status>
+        <midino>0x06</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Load track to deck 2 -->
+      <control>
+        <group>[Channel2]</group>
+        <key>LoadSelectedTrack</key>
+        <status>0x91</status>
+        <midino>0x64</midino>
+        <options><Button/></options>
+      </control>
+      
+      <!-- Monitor Cue (PFL) buttons -->
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.pflButton</key>
+        <status>0x90</status>
+        <midino>0x01</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.pflButton</key>
+        <status>0x91</status>
+
+        <midino>0x05</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Track Gain knobs -->
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.trackGain</key>
+        <status>0xB0</status>
+        <midino>0x01</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.trackGain</key>
+        <status>0xB1</status>
+        <midino>0x01</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Volume faders -->
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.volumeFader</key>
+        <status>0xB0</status>
+        <midino>0x05</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.volumeFader</key>
+        <status>0xB1</status>
+        <midino>0x05</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- EQ controls Channel 1 -->
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.eqHigh</key>
+        <status>0xB0</status>
+        <midino>0x02</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.eqMid</key>
+        <status>0xB0</status>
+        <midino>0x03</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.eqLow</key>
+        <status>0xB0</status>
+        <midino>0x04</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- EQ controls Channel 2 -->
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.eqHigh</key>
+        <status>0xB1</status>
+        <midino>0x02</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.eqMid</key>
+        <status>0xB1</status>
+        <midino>0x03</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.eqLow</key>
+        <status>0xB1</status>
+        <midino>0x04</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Pitch faders (absolute CC) -->
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.pitchFader</key>
+        <status>0xE0</status> <!-- CC ch1 -->
+        <midino>0x00</midino> <!-- TODO real CC Done -->
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.pitchFader</key>
+        <status>0xE1</status> <!-- CC ch2 -->
+        <midino>0x00</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <!-- The Denon MC2000 controller will send different midi depending on Vinyl mode button -->
+      <!-- The controller does not need to work out if Vinyl button is on or off -->
+      <!-- Jog wheel touch (note on/off) deck 1 -->
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.jogTouch</key>
+        <status>0x90</status>
+        <midino>0x52</midino> <!-- TODO -->
+        <options><Script-Binding/></options>
+      </control>
+      <!-- Jog wheel rotate (relative CC) deck 1 -->
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.jogWheel</key>
+        <status>0xB0</status>
+        <midino>0x51</midino> <!-- TODO Done -->
+        <options><Script-Binding/></options>
+      </control>
+      <!-- Jog wheel touch deck 2 -->
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.jogTouch</key>
+        <status>0x91</status>
+        <midino>0x52</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <!-- Jog wheel rotate deck 2 -->
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.jogWheel</key>
+        <status>0xB1</status>
+        <midino>0x51</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <!-- Shift button (global) -->
+      <control>
+        <group>[Master]</group>
+        <key>MC2000.shiftButton</key>
+        <status>0x90</status>
+        <midino>0x60</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Hotcue pads Deck 1 (4 pads: 0x17, 0x18, 0x19, 0x20) -->
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.hotcuePad</key>
+        <status>0x90</status>
+        <midino>0x17</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.hotcuePad</key>
+        <status>0x90</status>
+        <midino>0x18</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.hotcuePad</key>
+        <status>0x90</status>
+        <midino>0x19</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.hotcuePad</key>
+        <status>0x90</status>
+        <midino>0x20</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Hotcue pads Deck 2 (4 pads: 0x17, 0x18, 0x19, 0x20) -->
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.hotcuePad</key>
+        <status>0x91</status>
+        <midino>0x17</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.hotcuePad</key>
+        <status>0x91</status>
+        <midino>0x18</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.hotcuePad</key>
+        <status>0x91</status>
+        <midino>0x19</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.hotcuePad</key>
+        <status>0x91</status>
+        <midino>0x20</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Pitch Bend buttons Deck 1 -->
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.pitchBendUp</key>
+        <status>0x90</status>
+        <midino>0x0C</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.pitchBendDown</key>
+        <status>0x90</status>
+        <midino>0x0D</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Pitch Bend buttons Deck 2 -->
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.pitchBendUp</key>
+        <status>0x91</status>
+        <midino>0x0C</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.pitchBendDown</key>
+        <status>0x91</status>
+        <midino>0x0D</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Loop controls Deck 1 -->
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.loopIn</key>
+        <status>0x90</status>
+        <midino>0x51</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.loopOut</key>
+        <status>0x90</status>
+        <midino>0x39</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.reloopExit</key>
+        <status>0x90</status>
+        <midino>0x1D</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.loopDouble</key>
+        <status>0x90</status>
+        <midino>0x6A</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <key>MC2000.loopHalve</key>
+        <status>0x90</status>
+        <midino>0x69</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Loop controls Deck 2 -->
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.loopIn</key>
+        <status>0x91</status>
+        <midino>0x51</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.loopOut</key>
+        <status>0x91</status>
+        <midino>0x39</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.reloopExit</key>
+        <status>0x91</status>
+        <midino>0x1D</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.loopDouble</key>
+        <status>0x91</status>
+        <midino>0x6A</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <key>MC2000.loopHalve</key>
+        <status>0x91</status>
+        <midino>0x69</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Master Controls -->
+      <!-- Master Volume -->
+      <control>
+        <group>[Master]</group>
+        <key>MC2000.masterVolume</key>
+        <status>0xB0</status>
+        <midino>0x19</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Crossfader -->
+      <control>
+        <group>[Master]</group>
+        <key>MC2000.crossfader</key>
+        <status>0xB0</status>
+        <midino>0x16</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Headphone Volume -->
+      <control>
+        <group>[Master]</group>
+        <key>MC2000.headphoneVolume</key>
+        <status>0xB0</status>
+        <midino>0x44</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Headphone Cue Mix (Master/PFL balance) -->
+      <control>
+        <group>[Master]</group>
+        <key>MC2000.headphoneMix</key>
+        <status>0xB0</status>
+        <midino>0x43</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Balance/Pan -->
+      <control>
+        <group>[Master]</group>
+        <key>MC2000.balance</key>
+        <status>0xB0</status>
+        <midino>0x00</midino> <!-- TODO: Set actual MIDI code -->
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- FX Unit 1 -->
+      <!-- Effect 1 - Unit 1 -->
+      <control>
+        <group>[EffectRack1_EffectUnit1_Effect1]</group>
+        <key>MC2000.fx1_effect1_toggle</key>
+        <status>0x90</status>
+        <midino>0x15</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[EffectRack1_EffectUnit1_Effect1]</group>
+        <key>MC2000.fx1_effect1_meta</key>
+        <status>0xB0</status>
+        <midino>0x55</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Effect 2 - Unit 1 -->
+      <control>
+        <group>[EffectRack1_EffectUnit1_Effect2]</group>
+        <key>MC2000.fx1_effect2_toggle</key>
+        <status>0x90</status>
+        <midino>0x12</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[EffectRack1_EffectUnit1_Effect2]</group>
+        <key>MC2000.fx1_effect2_meta</key>
+        <status>0xB0</status>
+        <midino>0x56</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Effect 3 - Unit 1 -->
+      <control>
+        <group>[EffectRack1_EffectUnit1_Effect3]</group>
+        <key>MC2000.fx1_effect3_toggle</key>
+        <status>0x90</status>
+        <midino>0x13</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[EffectRack1_EffectUnit1_Effect3]</group>
+        <key>MC2000.fx1_effect3_meta</key>
+        <status>0xB0</status>
+        <midino>0x50</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- FX Unit 1 Wet/Dry (Encoder type) -->
+      <control>
+        <group>[EffectRack1_EffectUnit1]</group>
+        <key>MC2000.fx1_wetDry</key>
+        <status>0xB0</status>
+        <midino>0x58</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- FX Unit 2 -->
+      <!-- Effect 1 - Unit 2 -->
+      <control>
+        <group>[EffectRack1_EffectUnit2_Effect1]</group>
+        <key>MC2000.fx2_effect1_toggle</key>
+        <status>0x91</status>
+        <midino>0x15</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[EffectRack1_EffectUnit2_Effect1]</group>
+        <key>MC2000.fx2_effect1_meta</key>
+        <status>0xB0</status>
+        <midino>0x59</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Effect 2 - Unit 2 -->
+      <control>
+        <group>[EffectRack1_EffectUnit2_Effect2]</group>
+        <key>MC2000.fx2_effect2_toggle</key>
+        <status>0x91</status>
+        <midino>0x12</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[EffectRack1_EffectUnit2_Effect2]</group>
+        <key>MC2000.fx2_effect2_meta</key>
+        <status>0xB0</status>
+        <midino>0x5A</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- Effect 3 - Unit 2 -->
+      <control>
+        <group>[EffectRack1_EffectUnit2_Effect3]</group>
+        <key>MC2000.fx2_effect3_toggle</key>
+        <status>0x91</status>
+        <midino>0x13</midino>
+        <options><Script-Binding/></options>
+      </control>
+      <control>
+        <group>[EffectRack1_EffectUnit2_Effect3]</group>
+        <key>MC2000.fx2_effect3_meta</key>
+        <status>0xB0</status>
+        <midino>0x5B</midino>
+        <options><Script-Binding/></options>
+      </control>
+      
+      <!-- FX Unit 2 Wet/Dry (Encoder type) -->
+      <control>
+        <group>[EffectRack1_EffectUnit2]</group>
+        <key>MC2000.fx2_wetDry</key>
+        <status>0xB0</status>
+        <midino>0x5C</midino>
+        <options><Script-Binding/></options>
+      </control>
+
+      <!-- Library navigation -->
+      <control>
+        <group>[Library]</group>
+        <key>MoveFocusBackward</key>
+        <status>0xB0</status>
+        <midino>0x30</midino>
+        <options><Button/></options>
+      </control>
+
+      <control>
+        <group>[Library]</group>
+        <key>MoveFocusForward</key>
+        <status>0xB0</status>
+        <midino>0x29</midino>
+        <options><Button/></options>
+      </control>
+
+      <!-- Library vertical scroll encoder (requires script for relative encoding) -->
+      <control>
+        <group>[Library]</group>
+        <key>MC2000.ScrollVertical</key>
+        <status>0xB0</status>
+        <midino>0x54</midino>
+        <options><Script-Binding/></options>
+      </control>
+    </controls>
+    <outputs>
+      <!-- LED outputs are controlled directly via MC2000.setLed() in the script -->
+      <!-- No XML output mappings needed for MC2000 -->
+    </outputs>
+  </controller>
+</MixxxControllerPreset>

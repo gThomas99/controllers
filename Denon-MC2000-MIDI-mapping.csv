@@ -1,0 +1,74 @@
+MIDI No,Command Name (XML/JS),Mixxx Control,Group,Control Type,Notes
+90-43,playButton,[ChannelN]play,[Channel1],Binary,Toggle play/pause
+90-42,cueButton,[ChannelN]cue_default,[Channel1],Binary,CDJ mode cue button
+90-6B,syncButton,[ChannelN]sync_enabled,[Channel1],Binary,Sync tempo and phase
+90-06,keylockButton,[ChannelN]keylock,[Channel1],Binary,Toggle key lock (master tempo)
+90-64,LoadSelectedTrack,[ChannelN]LoadSelectedTrack,[Channel1],Binary,Load track from library
+90-01,pflButton,[ChannelN]pfl,[Channel1],Binary,Headphone cue (PFL)
+90-17,hotcuePad,[ChannelN]hotcue_1_activate,[Channel1],Binary,Hotcue 1 activate/set
+90-18,hotcuePad,[ChannelN]hotcue_2_activate,[Channel1],Binary,Hotcue 2 activate/set
+90-19,hotcuePad,[ChannelN]hotcue_3_activate,[Channel1],Binary,Hotcue 3 activate/set
+90-20,hotcuePad,[ChannelN]hotcue_4_activate,[Channel1],Binary,Hotcue 4 activate/set
+90-51,loopIn,[ChannelN]loop_in,[Channel1],Binary,Set/move loop in point
+90-39,loopOut,[ChannelN]loop_out,[Channel1],Binary,Set/move loop out point
+90-1D,reloopExit,[ChannelN]reloop_toggle,[Channel1],Binary,Toggle loop on/off
+90-6A,loopDouble,[ChannelN]loop_double,[Channel1],Binary,Double loop length
+90-69,loopHalve,[ChannelN]loop_halve,[Channel1],Binary,Halve loop length
+90-0C,pitchBendUp,[ChannelN]rate_temp_up,[Channel1],Binary,Temporary pitch bend up
+90-0D,pitchBendDown,[ChannelN]rate_temp_down,[Channel1],Binary,Temporary pitch bend down
+90-52,jogTouch,N/A (Script-only),[Channel1],Binary,Jog wheel touch detection
+90-60,shiftButton,N/A (Script-only),[Master],Binary,Global shift modifier
+91-43,playButton,[ChannelN]play,[Channel2],Binary,Toggle play/pause
+91-42,cueButton,[ChannelN]cue_default,[Channel2],Binary,CDJ mode cue button
+91-6B,syncButton,[ChannelN]sync_enabled,[Channel2],Binary,Sync tempo and phase
+91-06,keylockButton,[ChannelN]keylock,[Channel2],Binary,Toggle key lock (master tempo)
+91-64,LoadSelectedTrack,[ChannelN]LoadSelectedTrack,[Channel2],Binary,Load track from library
+91-05,pflButton,[ChannelN]pfl,[Channel2],Binary,Headphone cue (PFL)
+91-17,hotcuePad,[ChannelN]hotcue_1_activate,[Channel2],Binary,Hotcue 1 activate/set
+91-18,hotcuePad,[ChannelN]hotcue_2_activate,[Channel2],Binary,Hotcue 2 activate/set
+91-19,hotcuePad,[ChannelN]hotcue_3_activate,[Channel2],Binary,Hotcue 3 activate/set
+91-20,hotcuePad,[ChannelN]hotcue_4_activate,[Channel2],Binary,Hotcue 4 activate/set
+91-51,loopIn,[ChannelN]loop_in,[Channel2],Binary,Set/move loop in point
+91-39,loopOut,[ChannelN]loop_out,[Channel2],Binary,Set/move loop out point
+91-1D,reloopExit,[ChannelN]reloop_toggle,[Channel2],Binary,Toggle loop on/off
+91-6A,loopDouble,[ChannelN]loop_double,[Channel2],Binary,Double loop length
+91-69,loopHalve,[ChannelN]loop_halve,[Channel2],Binary,Halve loop length
+91-0C,pitchBendUp,[ChannelN]rate_temp_up,[Channel2],Binary,Temporary pitch bend up
+91-0D,pitchBendDown,[ChannelN]rate_temp_down,[Channel2],Binary,Temporary pitch bend down
+91-52,jogTouch,N/A (Script-only),[Channel2],Binary,Jog wheel touch detection
+B0-01,trackGain,[ChannelN]pregain,[Channel1],ControlPotMeter (0-4),Track gain/pregain knob
+B0-05,volumeFader,[ChannelN]volume,[Channel1],ControlPotMeter (0-1),Channel volume fader
+B0-02,eqHigh,[EqualizerRack1_[ChannelI]_Effect1]parameter3,[Channel1],ControlPotMeter (0-4),High EQ knob
+B0-03,eqMid,[EqualizerRack1_[ChannelI]_Effect1]parameter2,[Channel1],ControlPotMeter (0-4),Mid EQ knob
+B0-04,eqLow,[EqualizerRack1_[ChannelI]_Effect1]parameter1,[Channel1],ControlPotMeter (0-4),Low EQ knob
+B0-51,jogWheel,N/A (Script-only),[Channel1],Relative CC,Jog wheel rotation (relative)
+B1-01,trackGain,[ChannelN]pregain,[Channel2],ControlPotMeter (0-4),Track gain/pregain knob
+B1-05,volumeFader,[ChannelN]volume,[Channel2],ControlPotMeter (0-1),Channel volume fader
+B1-02,eqHigh,[EqualizerRack1_[ChannelI]_Effect1]parameter3,[Channel2],ControlPotMeter (0-4),High EQ knob
+B1-03,eqMid,[EqualizerRack1_[ChannelI]_Effect1]parameter2,[Channel2],ControlPotMeter (0-4),Mid EQ knob
+B1-04,eqLow,[EqualizerRack1_[ChannelI]_Effect1]parameter1,[Channel2],ControlPotMeter (0-4),Low EQ knob
+B1-51,jogWheel,N/A (Script-only),[Channel2],Relative CC,Jog wheel rotation (relative)
+B0-19,masterVolume,[Master]gain,[Master],ControlPotMeter (0-5),Master output volume
+B0-16,crossfader,[Master]crossfader,[Master],ControlPotMeter (-1 to 1),Crossfader position
+B0-44,headphoneVolume,[Master]headGain,[Master],ControlPotMeter (0-5),Headphone output volume
+B0-43,headphoneMix,[Master]headMix,[Master],ControlPotMeter (0-1),Headphone cue/main mix
+B0-00,balance,[Master]balance,[Master],ControlPotMeter (-1 to 1),Main output balance (L/R)
+E0-00,pitchFader,[ChannelN]rate,[Channel1],ControlPotMeter (-1 to 1),Pitch/tempo slider
+E1-00,pitchFader,[ChannelN]rate,[Channel2],ControlPotMeter (-1 to 1),Pitch/tempo slider
+90-15,fx1_effect1_toggle,[EffectRack1_EffectUnit1_Effect1]enabled,[EffectRack1_EffectUnit1_Effect1],Binary,FX Unit 1 Effect 1 toggle
+90-12,fx1_effect2_toggle,[EffectRack1_EffectUnit1_Effect2]enabled,[EffectRack1_EffectUnit1_Effect2],Binary,FX Unit 1 Effect 2 toggle
+90-13,fx1_effect3_toggle,[EffectRack1_EffectUnit1_Effect3]enabled,[EffectRack1_EffectUnit1_Effect3],Binary,FX Unit 1 Effect 3 toggle
+B0-55,fx1_effect1_meta,[EffectRack1_EffectUnit1_Effect1]meta,[EffectRack1_EffectUnit1_Effect1],ControlPotMeter (0-1),FX Unit 1 Effect 1 meta knob
+B0-56,fx1_effect2_meta,[EffectRack1_EffectUnit1_Effect2]meta,[EffectRack1_EffectUnit1_Effect2],ControlPotMeter (0-1),FX Unit 1 Effect 2 meta knob
+B0-50,fx1_effect3_meta,[EffectRack1_EffectUnit1_Effect3]meta,[EffectRack1_EffectUnit1_Effect3],ControlPotMeter (0-1),FX Unit 1 Effect 3 meta knob
+B0-58,fx1_wetDry,[EffectRack1_EffectUnit1]mix,[EffectRack1_EffectUnit1],Relative CC (Encoder),FX Unit 1 wet/dry mix encoder
+91-15,fx2_effect1_toggle,[EffectRack1_EffectUnit2_Effect1]enabled,[EffectRack1_EffectUnit2_Effect1],Binary,FX Unit 2 Effect 1 toggle
+91-12,fx2_effect2_toggle,[EffectRack1_EffectUnit2_Effect2]enabled,[EffectRack1_EffectUnit2_Effect2],Binary,FX Unit 2 Effect 2 toggle
+91-13,fx2_effect3_toggle,[EffectRack1_EffectUnit2_Effect3]enabled,[EffectRack1_EffectUnit2_Effect3],Binary,FX Unit 2 Effect 3 toggle
+B0-59,fx2_effect1_meta,[EffectRack1_EffectUnit2_Effect1]meta,[EffectRack1_EffectUnit2_Effect1],ControlPotMeter (0-1),FX Unit 2 Effect 1 meta knob
+B0-5A,fx2_effect2_meta,[EffectRack1_EffectUnit2_Effect2]meta,[EffectRack1_EffectUnit2_Effect2],ControlPotMeter (0-1),FX Unit 2 Effect 2 meta knob
+B0-5B,fx2_effect3_meta,[EffectRack1_EffectUnit2_Effect3]meta,[EffectRack1_EffectUnit2_Effect3],ControlPotMeter (0-1),FX Unit 2 Effect 3 meta knob
+B0-5C,fx2_wetDry,[EffectRack1_EffectUnit2]mix,[EffectRack1_EffectUnit2],Relative CC (Encoder),FX Unit 2 wet/dry mix encoder
+B0-30,MoveFocusBackward,[Library]MoveFocusBackward,[Library],Binary,Move focus to previous library pane
+B0-29,MoveFocusForward,[Library]MoveFocusForward,[Library],Binary,Move focus to next library pane
+B0-54,ScrollVertical,[Library]ScrollVertical,[Library],Relative CC (Encoder),Library vertical scroll encoder
