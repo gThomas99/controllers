@@ -1,4 +1,3 @@
-
 /**
  * Denon MC2000 Mixxx Controller Mapping
  * Author: Graham Thomas
@@ -560,15 +559,15 @@ MC2000.FxUnit = function(unitNumber) {
         group: this.group,
         inKey: "mix"
     });
-    
     // Custom input handler for relative encoder acting as pseudo pot
+    // reverse direction: CC 1 = decrease, CC 127 = increase
     this.wetDryEncoder.input = function(channel, control, value, status, group) {
         if (value === 1) {
             // Counterclockwise: decrease wet/dry mix
-            this.inSetParameter(this.inGetParameter() - 0.05);
+            this.inSetParameter(this.inGetParameter() + 0.05);
         } else if (value === 127) {
             // Clockwise: increase wet/dry mix
-            this.inSetParameter(this.inGetParameter() + 0.05);
+            this.inSetParameter(this.inGetParameter() - 0.05);
         }
     };
 };
@@ -659,12 +658,26 @@ MC2000.SamplerDeck = function(samplerNumber) {
     this.deckNumber = samplerNumber <= 4 ? 1 : 2; // Deck 1 for samplers 1-4, Deck 2 for 5-8
     var self = this;
     
-    // Play/Stop toggle button (only control needed)
+    // Play button - use push type for proper sampler behavior
     this.playButton = new components.Button({
         group: this.group,
-        inKey: "play",
-        type: components.Button.prototype.types.toggle,
+        type: components.Button.prototype.types.push,
     });
+    
+    // Custom input: play from start if stopped, stop if playing
+    this.playButton.input = function(channel, control, value, status, group) {
+        if (!MC2000.isButtonOn(value)) return; // Only act on press
+        
+        var isPlaying = engine.getValue(group, "play");
+        if (isPlaying) {
+            // If playing, stop it
+            engine.setValue(group, "play", 0);
+        } else {
+            // If stopped, play from cue point (start)
+            engine.setValue(group, "cue_gotoandplay", 1);
+        }
+    };
+    
     this.playButton.output = function(value) {
         var ledName = "sampler" + self.samplerNumber;
         if (MC2000.leds[ledName] !== undefined) {
@@ -974,7 +987,8 @@ MC2000.Deck = function(group) {
             this.loopOutBtn,
             this.loopHalveBtn,
             this.loopDoubleBtn,
-            this.reloopExitBtn
+            this.reloopExitBtn,
+            this.beatTapBtn
         ];
         
         // Apply shift/unshift to individual components
@@ -1220,6 +1234,13 @@ MC2000.Deck = function(group) {
         // Delegate to the hotcue button component (shift layers handled by component)
         this.hotcueButtons[n - 1].input(0, control, value, 0, group);
     };
+
+    // Beat Tap (tempo tap) button
+    this.beatTapBtn = new components.Button({
+        group: group,
+        inKey: "bpm_tap",
+        type: components.Button.prototype.types.push,
+    });
 };
 
 MC2000.buildComponents = function() {
@@ -1300,7 +1321,7 @@ MC2000.pflButton = function(channel, control, value, status, group) {
     if (wasPressed && MC2000.shiftHeld) {
         MC2000.shiftLock = !MC2000.shiftLock;
         MC2000.updateShiftState();
-        MC2000.blinkShiftLock(); // Blink for feedback
+        //MC2000.blinkShiftLock(); // Blink for feedback
         if (MC2000.debugMode) MC2000.debugLog("Shift lock " + (MC2000.shiftLock ? "ENABLED" : "DISABLED"));
         return;
     }
@@ -1386,6 +1407,16 @@ MC2000.pitchBendUp = function(channel, control, value, status, group) {
 
 MC2000.pitchBendDown = function(channel, control, value, status, group) {
     MC2000.decks[group].pitchBendDownBtn.input(channel, control, value, status, group);
+};
+
+//////////////////////////////
+// Beat Tap (tempo tap)     //
+//////////////////////////////
+MC2000.beatTap1 = function(channel, control, value, status, group) {
+    MC2000.decks["[Channel1]"].beatTapBtn.input(channel, control, value, status, "[Channel1]");
+};
+MC2000.beatTap2 = function(channel, control, value, status, group) {
+    MC2000.decks["[Channel2]"].beatTapBtn.input(channel, control, value, status, "[Channel2]");
 };
 
 //////////////////////////////
@@ -1706,15 +1737,15 @@ MC2000.samplerPlayButtonGeneric = function(channel, control, value, status) {
         return;
     }
 
-    // Normal behavior: If sampler empty, load selected library track and play instead of toggling
+    // Normal behavior: If sampler empty, load selected library track (but don't play yet)
     var loaded = engine.getValue(group, "track_loaded");
     if (loaded === 0) {
-        engine.setValue(group, "LoadSelectedTrackAndPlay", 1);
-        if (MC2000.debugMode) MC2000.debugLog("Sampler" + samplerNum + ": auto-loaded selected track and started playback");
-        return; // Do not toggle play state immediately after auto-load
+        engine.setValue(group, "LoadSelectedTrack", 1);
+        if (MC2000.debugMode) MC2000.debugLog("Sampler" + samplerNum + ": loaded selected track (not playing yet)");
+        return;
     }
 
-    // Otherwise toggle play as usual
+    // If track is loaded, delegate to play button for play/stop logic
     MC2000.samplers[samplerNum].playButton.input(channel, control, value, status, group);
 };
 
